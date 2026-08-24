@@ -15,8 +15,10 @@ interface User {
     email: string,
 }
 
+let users: User[] = [];
+
 app.get('/api/users', (req, res) => {
-    res.send('Users');
+    res.send(users);
 });
 
 app.post('/api/users', (req, res) => {
@@ -27,7 +29,9 @@ app.post('/api/users', (req, res) => {
         email: 'emailtest@gmail.com',
     };
 
-    res.json(newUser);
+    users.push(newUser);
+
+    res.send(newUser);
 });
 
 app.listen(PORT, () => console.log(`Server connected: http://localhost:${PORT}`));
