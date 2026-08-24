@@ -1,7 +1,28 @@
+'use client'
+
+import data from "@/src/api";
 import BackButton from "@/src/components/BackButton";
 import UserCard from "@/src/components/UserCard";
+import { useEffect, useState } from "react";
+
+type User = {
+    id: string,
+    name: string,
+    ra: string,
+    email: string,
+}
 
 export default function PageUsers() {
+    const [users, setUsers] = useState<User[]>();
+
+    async function loadUsers() {
+        setUsers(data);
+    }
+
+    useEffect(() => {
+        loadUsers();
+    }, []);
+
     return (
         <main className="flex flex-col flex-1 relative content-center gap-20 p-2 overflow-hidden">
 
@@ -25,11 +46,11 @@ export default function PageUsers() {
                 drop-shadow-black
             ">
                 
-                <UserCard id={'1'}/>
-                <UserCard id={'2'}/>
-                <UserCard id={'3'}/>
-                <UserCard id={'4'}/>
-                <UserCard id={'5'}/>
+                {
+                    users?.map(user => (
+                        <UserCard key={user.id} id={user.id} name={user.name} ra={user.ra} email={user.email}/>
+                    ))
+                }
                 
             </div>
 
