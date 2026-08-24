@@ -51,7 +51,7 @@ export default function UserCard({ id }: Props) {
             
             <div className="relative left-2 flex gap-4">
                 
-                <EditButton id='1'/>
+                <EditButton id={id}/>
                 <DeleteButton />
                 
             </div>

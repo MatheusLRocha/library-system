@@ -11,21 +11,51 @@ export default function PageNewUser() {
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">Nome</label>
-                        <input type="text" name="userName" id="userName" className="bg-blue-300/50 h-10 rounded-md"/>
+                        <input type="text" name="userName" id="userName" className="
+                            bg-blue-300/50 
+                            p-1 
+                            h-10 
+                            rounded-md 
+                            outline-none 
+                            focus:border-2 
+                            focus:border-blue-200
+                            text-white
+                            text-[1.2rem]
+                        "/>
 
                     </div>
 
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">RA</label>
-                        <input type="text" name="userRa" id="userRa" className="bg-blue-300/50 h-10 rounded-md"/>
+                        <input type="text" name="userRa" id="userRa" className="
+                            bg-blue-300/50 
+                            h-10 
+                            rounded-md 
+                            p-1
+                            outline-none 
+                            focus:border-2 
+                            focus:border-blue-200
+                            text-white
+                            text-[1.2rem]
+                        "/>
 
                     </div>
 
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">Email</label>
-                        <input type="email" name="userEmail" id="userEmail" className="bg-blue-300/50 h-10 rounded-md"/>
+                        <input type="email" name="userEmail" id="userEmail" className="
+                            bg-blue-300/50 
+                            h-10 
+                            rounded-md
+                            p-1
+                            outline-none 
+                            focus:border-2 
+                            focus:border-blue-200
+                            text-white
+                            text-[1.2rem]
+                        "/>
 
                     </div>
 
@@ -34,8 +64,7 @@ export default function PageNewUser() {
                         <button className="
                             w-30 h-8
                             bg-green-400/70
-                            border-[1.5px]
-                            border-green-700
+                            hover:bg-green-700
                             rounded-md
                             text-[1.2rem]
                             font-bold
@@ -43,7 +72,6 @@ export default function PageNewUser() {
                             top-20
                             right-40
                             text-white"
-
                         >
                             Cadastrar
                         </button>
