@@ -1,6 +1,6 @@
 'use client'
 
-import data from "@/src/api";
+import { getPosts } from "@/src/api";
 import BackButton from "@/src/components/BackButton";
 import UserCard from "@/src/components/UserCard";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ export default function PageUsers() {
     const [users, setUsers] = useState<User[]>();
 
     async function loadUsers() {
-        setUsers(data);
+        setUsers(await getPosts());
     }
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export default function PageUsers() {
                 
                 {
                     users?.map(user => (
-                        <UserCard key={user.id} id={user.id} name={user.name} ra={user.ra} email={user.email}/>
+                        <UserCard key={user.id} user={user}/>
                     ))
                 }
                 

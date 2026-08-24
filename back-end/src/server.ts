@@ -28,16 +28,36 @@ app.get('/api/users', (req, res) => {
 });
 
 app.post('/api/users', (req, res) => {
-    const newUser: User = {
-        id: '1',
-        name: 'Matheus',
-        ra: '111111',
-        email: 'emailtest@gmail.com',
-    };
+    const newUsers: User[] = [
+        {
+            id: '1',
+            name: 'Matheus',
+            ra: '111111',
+            email: 'emailtest@gmail.com',
+        },
+        {
+            id: '2',
+            name: 'Gaby',
+            ra: '111112',
+            email: 'emailA@gmail.com',
+        },
+        {
+            id: '3',
+            name: 'Duck',
+            ra: '111113',
+            email: 'emailB@gmail.com',
+        }
+    ];
 
-    users.push(newUser);
+    newUsers.forEach(user => users.push(user));
 
-    res.send(newUser);
+    res.send(newUsers);
+});
+
+app.get('/api/users/user/:id', (req, res) => {
+    const [user] = users.filter(user => user.id === req.params.id);
+
+    res.send(user);
 });
 
 app.listen(PORT, () => console.log(`Server connected: http://localhost:${PORT}`));
