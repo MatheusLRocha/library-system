@@ -1,12 +1,18 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
 
+const corOptions = {
+    origin: 'http://localhost:3000'
+}
+
 app.use(express.json());
+app.use(cors(corOptions));
 
 interface User {
     id: string,
