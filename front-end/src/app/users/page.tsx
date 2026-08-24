@@ -1,8 +1,10 @@
+import BackButton from "@/src/components/BackButton";
 import UserCard from "@/src/components/UserCard";
 
 export default function PageUsers() {
     return (
-        <main className="flex flex-col flex-1 content-center gap-20 p-2 overflow-hidden">
+        <main className="flex flex-col flex-1 relative content-center gap-20 p-2 overflow-hidden">
+
             <h1 className="text-3xl text-white font-bold relative left-10 top-5">
                 Users Page
             </h1>
@@ -22,12 +24,17 @@ export default function PageUsers() {
                 drop-shadow-2xl
                 drop-shadow-black
             ">
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
+                
+                <UserCard id={'1'}/>
+                <UserCard id={'2'}/>
+                <UserCard id={'3'}/>
+                <UserCard id={'4'}/>
+                <UserCard id={'5'}/>
+                
             </div>
+
+            <BackButton linkUrl="/" title="Voltar"/>
+
         </main>
     );
 }

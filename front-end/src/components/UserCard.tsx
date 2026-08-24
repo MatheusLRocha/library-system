@@ -1,7 +1,12 @@
 import Link from "next/link";
 import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
 
-export default function UserCard() {
+type Props = {
+    id: string;
+}
+
+export default function UserCard({ id }: Props) {
     return (
         <div 
             className="
@@ -13,8 +18,9 @@ export default function UserCard() {
                 bg-blue-200/20
                 p-2
         ">
+
             <Link 
-                href="/users/user" 
+                href={`/users/user/${id}`}
                 className="
                     flex flex-col 
                     gap-4 w-lg 
@@ -25,23 +31,31 @@ export default function UserCard() {
                     bg-white 
                     p-2
             ">
-                <div>
-                    <h1 className="relative text-2xl font-bold">User Card</h1>
+                
+                
+                <h1 className="relative text-2xl font-bold">User Card</h1>
 
+                <div>
+    
                     <h3>
                         <strong>RA:</strong>{}
                     </h3>
                     <h3>
                         <strong>Email:</strong>{}
                     </h3>
+
                 </div>
+                
             </Link>
             
             
             <div className="relative left-2 flex gap-4">
-                <EditButton />
-                <button className="bg-red-700 w-20 p-0.5 rounded-md font-bold hover:bg-red-900 transition-all text-white">Deletar</button>
+                
+                <EditButton id='1'/>
+                <DeleteButton />
+                
             </div>
+
         </div>
     );
 }

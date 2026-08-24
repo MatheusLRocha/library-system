@@ -1,6 +1,6 @@
 import BackButton from "@/src/components/BackButton";
 
-export default function PageNewUser() {
+export default function PageEditUser() {
     return (
         <main className="flex flex-col justify-center items-center flex-1 content-center gap-20 p-2">
 

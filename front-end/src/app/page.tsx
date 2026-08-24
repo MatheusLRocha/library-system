@@ -3,6 +3,7 @@ import PageButton from "../components/PageButton";
 export default function PageHome() {
   return (
     <main className="flex flex-1 content-center p-2">
+
         <div className="
           flex flex-col 
           gap-10 
@@ -16,13 +17,18 @@ export default function PageHome() {
           rounded-md 
           p-4 
         ">
+
           <h1 className="text-4xl text-white font-bold">HOME</h1>
 
           <div className="flex gap-3 pl-5">
+            
             <PageButton linkUrl="/users" title="Usuários Cadastrados"/>
             <PageButton linkUrl="/users/new" title="Cadastrar Usuário"/>
+            
           </div>
+
         </div>
+
     </main>
   );
 }
