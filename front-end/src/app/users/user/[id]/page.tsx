@@ -1,4 +1,4 @@
-import { getPost } from "@/src/api";
+import { getUser } from "@/src/api";
 import Book from "@/src/components/Book";
 import UserMenu from "@/src/components/UserMenu";
 
@@ -12,7 +12,7 @@ type User = {
 export default async function PageUser({ params }: { params: Promise<{id: string}> }) {
     const { id } = await params;
 
-    const user: User = await getPost(id);
+    const user: User = await getUser(id);
 
     return (
         <main className="flex flex-1 content-center gap-20 p-2">

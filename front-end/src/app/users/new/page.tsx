@@ -1,17 +1,42 @@
+'use client'
+
+import { createUser } from "@/src/api";
 import BackButton from "@/src/components/BackButton";
+import { SubmitEvent, useRef } from "react";
 
 export default function PageNewUser() {
+    const nameRef = useRef<HTMLInputElement>(null);
+    const raRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+
+    async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        if (!nameRef.current || !raRef.current || !emailRef.current) {
+            return;
+        }
+
+        const id = Math.floor(Math.random() * 10) + 1;
+
+        await createUser({
+            id: id.toString(),
+            name: nameRef.current.value,
+            ra: raRef.current.value,
+            email: emailRef.current.value
+        });
+    }
+
     return (
         <main className="flex flex-col justify-center items-center flex-1 content-center gap-20 p-2">
 
             <div className="w-5xl h-160 bg-blue-500/30 border-2 border-blue-600 p-4 rounded-md">
 
-                <form className="flex flex-col gap-10 p-4">
+                <form className="flex flex-col gap-10 p-4" onSubmit={handleSubmit}>
 
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">Nome</label>
-                        <input type="text" name="userName" id="userName" className="
+                        <input type="text" name="userName" ref={nameRef} id="userName" required className="
                             bg-blue-300/50 
                             p-1 
                             h-10 
@@ -28,7 +53,7 @@ export default function PageNewUser() {
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">RA</label>
-                        <input type="text" name="userRa" id="userRa" className="
+                        <input type="text" name="userRa" ref={raRef} id="userRa" required className="
                             bg-blue-300/50 
                             h-10 
                             rounded-md 
@@ -45,7 +70,7 @@ export default function PageNewUser() {
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">Email</label>
-                        <input type="email" name="userEmail" id="userEmail" className="
+                        <input type="email" name="userEmail" ref={emailRef} id="userEmail" required className="
                             bg-blue-300/50 
                             h-10 
                             rounded-md
@@ -72,6 +97,7 @@ export default function PageNewUser() {
                             top-20
                             right-40
                             text-white"
+                            type="submit"
                         >
                             Cadastrar
                         </button>
