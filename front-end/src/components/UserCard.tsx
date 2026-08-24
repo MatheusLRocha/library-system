@@ -4,9 +4,12 @@ import DeleteButton from "./DeleteButton";
 
 type Props = {
     id: string;
+    name: string,
+    ra: string,
+    email: string
 }
 
-export default function UserCard({ id }: Props) {
+export default function UserCard(data: Props) {
     return (
         <div 
             className="
@@ -20,7 +23,7 @@ export default function UserCard({ id }: Props) {
         ">
 
             <Link 
-                href={`/users/user/${id}`}
+                href={`/users/user/${data.id}`}
                 className="
                     flex flex-col 
                     gap-4 w-lg 
@@ -33,15 +36,15 @@ export default function UserCard({ id }: Props) {
             ">
                 
                 
-                <h1 className="relative text-2xl font-bold">User Card</h1>
+                <h1 className="relative text-2xl font-bold">{data.name}</h1>
 
                 <div>
     
                     <h3>
-                        <strong>RA:</strong>{}
+                        <strong>RA:</strong>{data.ra}
                     </h3>
                     <h3>
-                        <strong>Email:</strong>{}
+                        <strong>Email:</strong>{data.email}
                     </h3>
 
                 </div>
@@ -51,7 +54,7 @@ export default function UserCard({ id }: Props) {
             
             <div className="relative left-2 flex gap-4">
                 
-                <EditButton id={id}/>
+                <EditButton id={data.id}/>
                 <DeleteButton />
                 
             </div>

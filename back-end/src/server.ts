@@ -14,7 +14,7 @@ const corOptions = {
 app.use(express.json());
 app.use(cors(corOptions));
 
-interface User {
+type User = {
     id: string,
     name: string,
     ra: string,
