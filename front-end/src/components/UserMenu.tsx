@@ -1,4 +1,3 @@
-import Link from "next/link";
 import BackButton from "@/src/components/BackButton";
 
 interface Props {

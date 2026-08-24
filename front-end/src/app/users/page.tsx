@@ -1,6 +1,6 @@
 'use client'
 
-import { getPosts } from "@/src/api";
+import { getUsers } from "@/src/api";
 import BackButton from "@/src/components/BackButton";
 import UserCard from "@/src/components/UserCard";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ export default function PageUsers() {
     const [users, setUsers] = useState<User[]>();
 
     async function loadUsers() {
-        setUsers(await getPosts());
+        setUsers(await getUsers());
     }
 
     useEffect(() => {
