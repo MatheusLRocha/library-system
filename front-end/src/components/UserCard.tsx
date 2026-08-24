@@ -2,14 +2,18 @@ import Link from "next/link";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 
-type Props = {
+type User = {
     id: string;
     name: string,
     ra: string,
     email: string
 }
 
-export default function UserCard(data: Props) {
+type Props = {
+    user: User;
+}
+
+export default function UserCard({ user }: Props) {
     return (
         <div 
             className="
@@ -23,7 +27,7 @@ export default function UserCard(data: Props) {
         ">
 
             <Link 
-                href={`/users/user/${data.id}`}
+                href={`/users/user/${user.id}`}
                 className="
                     flex flex-col 
                     gap-4 w-lg 
@@ -36,15 +40,15 @@ export default function UserCard(data: Props) {
             ">
                 
                 
-                <h1 className="relative text-2xl font-bold">{data.name}</h1>
+                <h1 className="relative text-2xl font-bold">{user.name}</h1>
 
                 <div>
     
                     <h3>
-                        <strong>RA:</strong>{data.ra}
+                        <strong>RA:</strong>{user.ra}
                     </h3>
                     <h3>
-                        <strong>Email:</strong>{data.email}
+                        <strong>Email:</strong>{user.email}
                     </h3>
 
                 </div>
@@ -54,7 +58,7 @@ export default function UserCard(data: Props) {
             
             <div className="relative left-2 flex gap-4">
                 
-                <EditButton id={data.id}/>
+                <EditButton id={user.id}/>
                 <DeleteButton />
                 
             </div>
