@@ -1,7 +1,7 @@
 import BackButton from "@/src/components/BackButton";
 
 interface Props {
-    title: string
+    title: string,
 }
 
 export default function UserMenu({ title }: Props) {

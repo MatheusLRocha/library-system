@@ -2,28 +2,30 @@
 
 import { createUser } from "@/src/api";
 import BackButton from "@/src/components/BackButton";
-import { SubmitEvent, useRef } from "react";
+import { SubmitEvent, useState } from "react";
 
 export default function PageNewUser() {
-    const nameRef = useRef<HTMLInputElement>(null);
-    const raRef = useRef<HTMLInputElement>(null);
-    const emailRef = useRef<HTMLInputElement>(null);
+    const [name, setName] = useState<string>('');
+    const [ra, setRa] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
 
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
-
-        if (!nameRef.current || !raRef.current || !emailRef.current) {
-            return;
-        }
 
         const id = Math.floor(Math.random() * 10) + 1;
 
         await createUser({
             id: id.toString(),
-            name: nameRef.current.value,
-            ra: raRef.current.value,
-            email: emailRef.current.value
+            name,
+            ra,
+            email
         });
+
+        setName('');
+        setRa('');
+        setEmail('');
+
+        alert('Usuário Cadastrado');
     }
 
     return (
@@ -36,7 +38,7 @@ export default function PageNewUser() {
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">Nome</label>
-                        <input type="text" name="userName" ref={nameRef} id="userName" required className="
+                        <input type="text" name="userName" id="userName" required className="
                             bg-blue-300/50 
                             p-1 
                             h-10 
@@ -46,14 +48,17 @@ export default function PageNewUser() {
                             focus:border-blue-200
                             text-white
                             text-[1.2rem]
-                        "/>
+                        "
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        />
 
                     </div>
 
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">RA</label>
-                        <input type="text" name="userRa" ref={raRef} id="userRa" required className="
+                        <input type="text" name="userRa" id="userRa" required className="
                             bg-blue-300/50 
                             h-10 
                             rounded-md 
@@ -63,14 +68,17 @@ export default function PageNewUser() {
                             focus:border-blue-200
                             text-white
                             text-[1.2rem]
-                        "/>
+                        "
+                            onChange={(e) => setRa(e.target.value)}
+                            value={ra}
+                        />
 
                     </div>
 
                     <div className="flex flex-col gap-3">
 
                         <label className="text-white font-bold text-2xl">Email</label>
-                        <input type="email" name="userEmail" ref={emailRef} id="userEmail" required className="
+                        <input type="email" name="userEmail" id="userEmail" required className="
                             bg-blue-300/50 
                             h-10 
                             rounded-md
@@ -80,7 +88,10 @@ export default function PageNewUser() {
                             focus:border-blue-200
                             text-white
                             text-[1.2rem]
-                        "/>
+                        "
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                        />
 
                     </div>
 
@@ -101,6 +112,7 @@ export default function PageNewUser() {
                         >
                             Cadastrar
                         </button>
+
                         <BackButton linkUrl="/" title="Cancelar"/>
 
                     </div>
