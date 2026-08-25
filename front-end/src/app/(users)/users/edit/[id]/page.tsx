@@ -1,4 +1,4 @@
-import BackButton from "@/src/components/BackButton";
+
 
 export default async function PageEditUser({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -37,7 +37,10 @@ export default async function PageEditUser({ params }: { params: Promise<{ id: s
                         '>
                             Editar
                         </button>
-                        <BackButton linkUrl="/" title="Cancelar"/>
+
+                        <button className="w-30 h-8 bg-red-400/70 hover:bg-red-700 rounded-md text-[1.2rem] font-bold absolute top-20 right-5 text-white" type="button">
+                            Limpar
+                        </button>
 
                     </div>
 

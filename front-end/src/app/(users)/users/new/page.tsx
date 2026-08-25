@@ -1,7 +1,6 @@
 'use client'
 
 import { createUser } from "@/src/api";
-import BackButton from "@/src/components/BackButton";
 import { SubmitEvent, useState } from "react";
 
 export default function PageNewUser() {
@@ -21,11 +20,15 @@ export default function PageNewUser() {
             email
         });
 
+        resetForm();
+
+        alert('Usuário Cadastrado');
+    }
+
+    function resetForm() {
         setName('');
         setRa('');
         setEmail('');
-
-        alert('Usuário Cadastrado');
     }
 
     return (
@@ -62,7 +65,9 @@ export default function PageNewUser() {
                             Cadastrar
                         </button>
 
-                        <BackButton linkUrl="/" title="Cancelar"/>
+                        <button className="w-30 h-8 bg-red-400/70 hover:bg-red-700 rounded-md text-[1.2rem] font-bold absolute top-20 right-5 text-white" onClick={resetForm} type="button">
+                            Limpar
+                        </button>
 
                     </div>
 
