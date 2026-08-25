@@ -1,4 +1,4 @@
-import PageButton from "../components/PageButton";
+import PageButton from "../../components/PageButton";
 
 export default function PageHome() {
   return (
