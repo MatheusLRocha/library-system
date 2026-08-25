@@ -22,8 +22,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         </header>
         
-        {children}
 
+        <main className="flex justify-center flex-1 gap-10 p-2">
+          {children}
+        </main>
+        
       </body>
     </html>
   );
