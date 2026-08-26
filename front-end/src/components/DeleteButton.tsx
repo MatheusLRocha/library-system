@@ -1,6 +1,21 @@
-export default function DeleteButton() {
+import { deleteUser } from "../api";
+
+type Props = {
+    id: string
+}
+
+export default function DeleteButton({ id }: Props) {
+    function handleClick() {
+        const text = 'Tem certeza que deseja deletar o usuário?'; 
+        if (!confirm(text)) {
+            return;
+        }
+
+        deleteUser(id);
+    }
+
     return (
-        <button className="bg-red-700 w-20 p-0.5 rounded-md font-bold hover:bg-red-900 transition-all text-white">
+        <button onClick={handleClick} className="bg-red-700 w-20 p-0.5 rounded-md font-bold hover:bg-red-900 transition-all text-white">
             Deletar
         </button>
     );

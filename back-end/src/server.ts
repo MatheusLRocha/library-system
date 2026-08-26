@@ -24,19 +24,32 @@ app.get('/api/users', async (req, res) => {
     res.json(users);
 });
 
-app.get('/api/users/user/:id', (req, res) => {
-    
+app.get('/api/users/user/:id', async (req, res) => {
+    const user = await User.findOne({
+        where: {
+            id: req.params.id
+        }
+    });
+
+    res.json(user);
 });
 
-app.post('/api/users', (req, res) => {
-    const newUser = {
-        id: req.body.id,
-        name: req.body.name,
+app.post('/api/users', async (req, res) => {
+    const newUser = await User.create({
+        name: req.body.name, 
         ra: req.body.ra,
         email: req.body.email
-    };
+    });
 
     res.status(201).json(newUser);
+});
+
+app.delete('/api/users/user/:id', async (req, res) => {
+    await User.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
 });
 
 

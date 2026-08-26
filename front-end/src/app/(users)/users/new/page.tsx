@@ -11,10 +11,7 @@ export default function PageNewUser() {
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        const id = Math.floor(Math.random() * 10) + 1;
-
         await createUser({
-            id: id.toString(),
             name,
             ra,
             email

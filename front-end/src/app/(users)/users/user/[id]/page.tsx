@@ -3,7 +3,6 @@ import Book from "@/src/components/Book";
 import UserMenu from "@/src/components/UserMenu";
 
 type User = {
-    id: string,
     name: string,
     ra: string,
     email: string,
