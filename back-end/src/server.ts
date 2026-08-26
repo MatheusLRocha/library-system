@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-
+import User from './models/user.js';
+import sequelize from './connection.js';
 
 dotenv.config();
 
@@ -15,34 +16,25 @@ const corOptions = {
 app.use(express.json());
 app.use(cors(corOptions));
 
-type User = {
-    id: string,
-    name: string,
-    ra: string,
-    email: string,
-}
+app.get('/api/users', async (req, res) => {
+    const users = await User.findAll();
 
-let users: User[] = [];
+    await sequelize.authenticate();
 
-app.get('/api/users', (req, res) => {
-    res.send(users);
+    res.json(users);
 });
 
 app.get('/api/users/user/:id', (req, res) => {
-    const [user] = users.filter(user => user.id === req.params.id);
-
-    res.send(user);
+    
 });
 
 app.post('/api/users', (req, res) => {
-    const newUser: User = {
+    const newUser = {
         id: req.body.id,
         name: req.body.name,
         ra: req.body.ra,
         email: req.body.email
     };
-
-    users.push(newUser);
 
     res.status(201).json(newUser);
 });
