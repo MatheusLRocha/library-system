@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from "sequelize";
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../database/production.sqlite'
+    storage: '../database/development.sqlite'
 });
 
 const User = sequelize.define(
@@ -25,13 +25,6 @@ const User = sequelize.define(
     }
 )
 
-
-
-try {
-    await sequelize.authenticate();
-    console.log('Connection successed');
-} catch(error) {
-    console.error(`Unable to connect: ${error}`);
-}
+User.sync();
 
 export default sequelize;

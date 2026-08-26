@@ -51,3 +51,9 @@ app.post('/api/users', (req, res) => {
 
 app.listen(PORT, () => console.log(`Server connected: http://localhost:${PORT}`));
 
+try {
+    await sequelize.authenticate();
+    console.log('Connection successed');
+} catch(error) {
+    console.error(`Unable to connect: ${error}`);
+}
