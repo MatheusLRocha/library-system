@@ -1,5 +1,9 @@
-module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
+import { DataTypes } from "sequelize";
+import sequelize from "../connection.js";
+
+const User = sequelize.define(
+    'User',
+    {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -14,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true,
         }
-    });
+    }
+);
 
-    return User;
-}
+export default User;
