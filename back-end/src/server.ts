@@ -44,6 +44,29 @@ app.post('/api/users', async (req, res) => {
     res.status(201).json(newUser);
 });
 
+app.put('/api/users/user/:id', async (req, res) => {
+    await User.update(
+        {
+            name: req.body.name,
+            ra: req.body.ra,
+            email: req.body.email
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    );
+
+    const updateUser = await User.findOne({
+        where: {
+            id: req.params.id
+        }
+    });
+
+    res.json(updateUser);
+});
+
 app.delete('/api/users/user/:id', async (req, res) => {
     await User.destroy({
         where: {

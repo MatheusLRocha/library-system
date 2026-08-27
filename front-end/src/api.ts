@@ -31,6 +31,12 @@ export async function createUser(data: CreateUserBody): Promise<User> {
     return response.data;
 }
 
+export async function updateUser(id: string, data: CreateUserBody): Promise<User> {
+    const response = await axios.put<User>(`http://localhost:8000/api/users/user/${id}`, data);
+
+    return response.data;
+}
+
 export async function deleteUser(id: string) {
     await axios.delete<User>(`http://localhost:8000/api/users/user/${id}`);
 }
