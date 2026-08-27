@@ -1,3 +1,6 @@
+'use client'
+
+import { useRouter } from "next/navigation";
 import { deleteUser } from "../api";
 
 type Props = {
@@ -5,6 +8,8 @@ type Props = {
 }
 
 export default function DeleteButton({ id }: Props) {
+    const router = useRouter();
+
     function handleClick() {
         const text = 'Tem certeza que deseja deletar o usuário?'; 
         if (!confirm(text)) {
@@ -12,6 +17,8 @@ export default function DeleteButton({ id }: Props) {
         }
 
         deleteUser(id);
+
+        router.refresh();
     }
 
     return (

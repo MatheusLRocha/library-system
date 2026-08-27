@@ -2,6 +2,7 @@
 
 import { createUser } from "@/src/api";
 import { SubmitEvent, useState } from "react";
+import type { CreateUserBody } from "@/src/api";
 
 export default function PageNewUser() {
     const [name, setName] = useState<string>('');
@@ -11,11 +12,9 @@ export default function PageNewUser() {
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        await createUser({
-            name,
-            ra,
-            email
-        });
+        const userBody: CreateUserBody = {name, ra, email};
+
+        await createUser(userBody);
 
         resetForm();
 
