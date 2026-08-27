@@ -1,13 +1,9 @@
+'use client'
+
 import Link from "next/link";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
-
-type User = {
-    id: string;
-    name: string,
-    ra: string,
-    email: string
-}
+import type { User } from "../api";
 
 type Props = {
     user: User;

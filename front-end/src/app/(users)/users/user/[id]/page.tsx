@@ -1,12 +1,7 @@
 import { getUser } from "@/src/api";
 import Book from "@/src/components/Book";
 import UserMenu from "@/src/components/UserMenu";
-
-type User = {
-    name: string,
-    ra: string,
-    email: string,
-}
+import type { User } from "@/src/api";
 
 export default async function PageUser({ params }: { params: Promise<{id: string}> }) {
     const { id } = await params;
