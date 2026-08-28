@@ -14,29 +14,122 @@ export type CreateUserBody = {
 }
 
 export async function getUsers(): Promise<User[]> {
-    const response = await axios.get<User[]>('http://localhost:8000/api/users');
+    try {
+        const response = await axios.get<User[]>('http://localhost:8000/api/users');
 
-    return response.data;
+        return response.data;
+    } catch(error) {
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+
+            console.log(error.config);
+        }
+
+        throw error;
+    }
+    
 }
 
 export async function getUser(id: string): Promise<User> {
-    const response = await axios.get<User>(`http://localhost:8000/api/users/user/${id}`);
 
-    return response.data;
+    try {
+        const response = await axios.get<User>(`http://localhost:8000/api/users/user/${id}`);
+
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+
+            console.log(error.config);
+        }
+
+        throw error;
+    }
+
 }
 
 export async function createUser(data: CreateUserBody): Promise<User> {
-    const response = await axios.post<User>('http://localhost:8000/api/users', data);
+    try {
+        const response = await axios.post<User>('http://localhost:8000/api/users', data);
 
-    return response.data;
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+
+            console.log(error.config);
+        }
+
+        throw error;
+    }
 }
 
 export async function updateUser(id: string, data: CreateUserBody): Promise<User> {
-    const response = await axios.put<User>(`http://localhost:8000/api/users/user/${id}`, data);
+    try {
+        const response = await axios.put<User>(`http://localhost:8000/api/users/user/${id}`, data);
 
-    return response.data;
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+
+            console.log(error.config);
+        }
+
+        throw error;
+    }
 }
 
 export async function deleteUser(id: string) {
-    await axios.delete<User>(`http://localhost:8000/api/users/user/${id}`);
+    try {
+        await axios.delete<User>(`http://localhost:8000/api/users/user/${id}`);
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+
+            console.log(error.config);
+        }
+
+        throw error;
+    }
 }

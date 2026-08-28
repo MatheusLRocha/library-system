@@ -14,11 +14,15 @@ export default function PageNewUser() {
 
         const userBody: CreateUserBody = {name, ra, email};
 
-        await createUser(userBody);
+        try {
+            await createUser(userBody);
 
-        resetForm();
+            alert('Usuário Cadastrado');
 
-        alert('Usuário Cadastrado');
+            resetForm();
+        } catch (error) {
+            alert(`Não foi possível cadastrar usuário: ${error}`);
+        }
     }
 
     function resetForm() {
