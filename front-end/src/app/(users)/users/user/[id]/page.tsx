@@ -10,7 +10,7 @@ export default async function PageUser({ params }: { params: Promise<{id: string
 
     return (
         <>    
-            <UserMenu title={user.name}/>
+            <UserMenu user={user}/>
 
             <div className="flex flex-wrap content-start bg-blue-500/30 w-full rounded-md border-2 border-blue-600 p-3 gap-5">
                 <Book />
